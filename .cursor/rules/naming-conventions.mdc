@@ -1,0 +1,199 @@
+---
+description: Quy tắc đặt tên identifier trong SecurePharma (DB, code, account demo, secret) — chuyên nghiệp, có hệ thống, dễ đọc.
+globs:
+alwaysApply: true
+---
+
+# Naming Conventions — SecurePharma
+
+> **TRIỆU CHỨNG:** Đặt `kho1/kho123`, `nv1`, `admin/admin123` trông amateur.
+> **MỤC TIÊU:** Mọi tên trong project (DB column, API field, account demo, secret, biến JS) phải **tự giải thích**, **có hệ thống**, **dễ demo cho giảng viên**.
+
+---
+
+## 1. Tài khoản demo (Seed Users)
+
+### ❌ KHÔNG dùng — trông amateur
+
+| Username | Password | Lý do sai |
+|---|---|---|
+| `kho1` | `kho123` | Tên + số chung chung, không thấy role |
+| `nv1`, `nv2` | `nv123` | Cùng lý do |
+| `admin` | `admin123` | Quá obvious, demo trông "đồ án sinh viên" |
+| `user1`, `test1` | `pass1` | Vô nghĩa, không phản ánh nghiệp vụ |
+
+### ✅ Dùng — có hệ thống, dễ nhận diện role
+
+| Role | Pattern username | Password mẫu | Ví dụ |
+|---|---|---|---|
+| **Admin (Quản lý)** | `admin.{tên}` | `Admin@2026` | `admin.huong` (Nguyễn Thị Hương) |
+| **NV_BanHang (Bán hàng)** | `banhang.{tên}` | `BanHang@2026` | `banhang.minh`, `banhang.anh` |
+| **NV_Kho (Thủ kho)** | `kho.{tên}` | `Kho@2026` | `kho.cuong`, `kho.thao` |
+
+**Quy tắc cụ thể:**
+
+- Username dạng **role.tên** viết thường, phân cách bằng dấu `.`
+- Tên ngắn (3-6 ký tự), lấy từ họ tên nhân viên thật trong seed (`NhanVien.TenNV`)
+- Password có **ký tự đặc biệt + số + chữ hoa** (vẫn nhớ được, KHÔNG phải `123`)
+- Seed phải có **comment** trong code/sql giải thích cho giảng viên:
+  ```sql
+  -- Tài khoản demo cho báo cáo:
+  --   admin.huong / Admin@2026  (Quản lý - Nguyễn Thị Hương)
+  --   banhang.minh / BanHang@2026 (NV Bán hàng - Trần Văn Minh)
+  --   kho.cuong    / Kho@2026    (Thủ kho - Lê Văn Cường)
+  ```
+
+> 🎓 **Lý do:** Khi giảng viên hỏi "tài khoản test là gì?", trả lời `kho.cuong / Kho@2026` nghe chuyên nghiệp hơn `kho1/kho123` rất nhiều.
+
+---
+
+## 2. SQL — Tên bảng, cột, khóa ngoài
+
+### Bảng (Tables)
+
+- **PascalCase, số ít** tiếng Việt không dấu:
+  - ✅ `DanhMuc`, `NhanVien`, `KhachHang`, `HoaDon`
+  - ❌ `Danh_mucs`, `tbl_NhanVien`, `employee`
+- Các bảng pivot/qua hệ thống: prefix mô tả quan hệ:
+  - ✅ `LoThuoc_ChiTietNhap` (lô thuốc + chi tiết nhập)
+  - ❌ `ChiTietLoThuocNhap`
+
+### Cột (Columns)
+
+| Loại | Pattern | Ví dụ |
+|---|---|---|
+| Primary key | `Ma{Entity}` + kiểu tương ứng | `MaThuoc INT`, `MaNV INT`, `MaDM VARCHAR` |
+| Khóa ngoài | Cùng tên PK được tham chiếu | `MaNV` trong `TaiKhoan` |
+| Tên hiển thị | `Ten{Entity}` | `TenThuoc`, `TenNV` |
+| Số lượng | `SoLuong{Context}` | `SoLuongNhap`, `SoLuongTonKho`, `SoLuongBan` |
+| Ngày / Giờ | `Ngay{Context}` | `NgayNhap`, `NgaySX`, `NgayVaoLam`, `NgayGioLap` |
+| Tiền | `Gia{Context}` / `TongTien` | `GiaBan`, `GiaNhap`, `TongTien` |
+| Trạng thái | `TrangThai` | Chuỗi NVARCHAR mô tả |
+| Mật khẩu hash | `MatKhauHash` (đủ rõ nghĩa "đã hash") | — |
+| Vai trò | `VaiTro` (NVARCHAR, có CHECK) | `Admin`, `NV_BanHang`, `NV_Kho` |
+| Audit | Action + TableName + RecordID + Old/NewValue | — |
+
+### Index
+
+- `IX_{Table}_{Column}` cho single column
+- `IX_{Table}_{Col1}_{Col2}` cho composite
+- Ví dụ: `IX_Thuoc_TenThuoc`, `IX_HoaDon_NgayGioLap`
+
+---
+
+## 3. JWT / Secret — Không "demo123"
+
+### ❌ KHÔNG dùng
+
+```env
+JWT_SECRET=secret
+JWT_SECRET=mysecretkey123
+JWT_SECRET=SuperSecret
+```
+
+### ✅ Dùng — phải có format rõ ràng + cảnh báo
+
+```env
+JWT_SECRET=SecurePharma-{env}-{version}-{nonce}
+# Ví dụ: SecurePharma-dev-v1-a8c3f9e2b1
+# HOẶC đọc từ file/HSM trong production
+```
+
+**Quy tắc:**
+- Bao gồm **project name + env + version + random nonce** (>= 32 ký tự)
+- KHÔNG BAO GIỜ commit vào repo (`.env` đã `.gitignore`)
+- Phải cảnh báo khi để default: `JWT_SECRET=change-me-in-production`
+- Cho AES key/IV: cũng phải comment rõ là dev-only
+
+---
+
+## 4. JavaScript / TypeScript
+
+### Biến
+
+- `camelCase` cho biến thường, hàm, thuộc tính: `tenNV`, `maThuoc`, `tongTien`
+- `PascalCase` cho class, component React, type: `AuthService`, `LoginPage`
+- `UPPER_SNAKE_CASE` cho hằng số: `SALT_ROUNDS = 10`, `JWT_EXPIRES_IN = '8h'`
+- Boolean: prefix `is` / `has` / `can`: `isAuthenticated`, `hasRole`, `canDelete`
+
+### Hàm
+
+- Verb + Object: `getUserById`, `createPhieuNhap`, `validateLogin`
+- KHÔNG dùng `doIt`, `handleStuff`, `process`, `manageData`
+
+### File
+
+- camelCase cho `.js` / service / util: `authService.js`, `phieuNhapService.js`
+- PascalCase cho component React: `LoginPage.jsx`, `DashboardPage.jsx`
+- Đã ghi rõ trong `structure.mdc` mục 3 + 4 — không lặp lại ở đây.
+
+---
+
+## 5. API endpoint & payload
+
+### Endpoint URL — RESTful, tiếng Việt không dấu
+
+| Resource | Endpoint | Method |
+|---|---|---|
+| Tài khoản | `/api/auth/login`, `/api/auth/me` | POST / GET |
+| Thuốc | `/api/thuoc`, `/api/thuoc/:id` | CRUD |
+| Danh mục | `/api/danh-muc`, `/api/danh-muc/:id` | CRUD |
+| Phiếu nhập | `/api/phieu-nhap`, `/api/phieu-nhap/:id` | CRUD |
+| Bán hàng | `/api/ban-hang` | POST |
+| Hóa đơn | `/api/hoa-don`, `/api/hoa-don/:id`, `/api/hoa-don/:id/huy` | GET / GET / PUT |
+| Thống kê | `/api/thong-ke/kho`, `/api/thong-ke/hoa-don`, `/api/thong-ke/tai-chinh` | GET |
+
+- ❌ `/api/get_thuoc`, `/api/thuoc_list`
+- ✅ `/api/thuoc` (GET = list, GET /:id = detail, POST = create, PUT = update, DELETE = delete)
+
+### Request/Response field
+
+- camelCase cho JSON field (chuẩn JS):
+  - ✅ `{ "tenThuoc": "Paracetamol", "maDM": "DM001", "giaBanThamKhao": 25000 }`
+  - ❌ `{ "TenThuoc": ... }` (giữ PascalCase từ SQL) — dễ rối khi map
+- Date format: ISO 8601 string (`2026-09-15T08:00:00.000Z`)
+- Money: số (number), tránh string `"25000"` — FE sẽ `formatVNDCurrency` khi hiển thị
+
+---
+
+## 6. React (FE)
+
+- Component: `PascalCase.jsx` ✅ — đã quy định ở `structure.mdc`
+- Hook: `useXxx.js` (`useAuth`, `useDebounce`)
+- Prop / State: camelCase
+- CSS class (Tailwind): dùng semantic, không viết tắt:
+  - ✅ `bg-primary-600`, `text-error-red`
+  - ❌ `bg-pr-600`, `txt-er`
+
+---
+
+## 7. Tên thương hiệu / hằng số hiển thị
+
+| Mục đích | Chuẩn |
+|---|---|
+| Tên app | `SecurePharma` (1 từ, CamelCase) |
+| Tagline | `Hệ thống quản lý cửa hàng dược phẩm` |
+| Môi trường | `development` / `staging` / `production` (lowercase) |
+| Role label UI | `Quản lý` / `Nhân viên bán hàng` / `Thủ kho` (Tiếng Việt có dấu, có nghĩa) |
+| Currency | `VND` |
+| Date format UI | `dd/MM/yyyy` (VN style) |
+
+---
+
+## 8. Khi tạo mới (Checklist)
+
+Mỗi lần thêm account / column / API / component, tự kiểm:
+
+- [ ] Tên có tự giải thích **mục đích**? (không phải `data1`, `item2`)
+- [ ] Có nhất quán với **pattern đã có** trong project?
+- [ ] Có dễ **đọc to** lên trong buổi bảo vệ không?
+- [ ] Nếu là secret: có **comment cảnh báo** dev-only / change-me?
+- [ ] Nếu là account demo: đã liệt kê trong `docs/INSTALL.md` hoặc comment trong seed?
+
+---
+
+## 9. Phản hồi khi AI (tôi) đề xuất tên tệ
+
+Khi AI tạo ra tên như `kho1`, `nv2`, `test123`, `abcxyz` → AI **phải tự sửa** theo rule này trước khi viết code, không cần user nhắc.
+
+Khi user cố tình dùng tên tệ, AI **đẩy lại** đề xuất tên tốt hơn theo các pattern ở trên.

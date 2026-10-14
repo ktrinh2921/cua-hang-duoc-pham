@@ -1,0 +1,8 @@
+IF COL_LENGTH('HoaDon', 'GiamGia') IS NULL
+BEGIN
+    ALTER TABLE HoaDon
+    ADD GiamGia DECIMAL(18,2) NOT NULL
+        CONSTRAINT DF_HoaDon_GiamGia DEFAULT 0;
+END
+GO
+

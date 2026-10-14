@@ -1,0 +1,85 @@
+---
+description: Documentation conventions — where .md files live, how they're written, and how links must be maintained
+globs:
+alwaysApply: true
+---
+
+# SecurePharma — Documentation Rules
+
+> Always apply. Companion to `structure.mdc`. Together they keep the repo tidy.
+
+## 1. The single rule of thumb
+
+> **Markdown documentation belongs in `docs/`. Only `README.md` lives at the repo root.**
+
+If you (the agent) are about to create a new `.md` file anywhere in the repo, STOP and apply the table in Section 2 of `structure.mdc` first.
+
+## 2. Folder map for documentation
+
+```
+docs/
+├── README.md              # Index / table of contents of docs/
+├── INSTALL.md             # How to install + run locally
+├── FEATURES.md            # Functional analysis (from the project brief)
+├── IMPLEMENTATION_PLAN.md # Living implementation plan (all phases)
+├── <topic>.md             # Other living docs (SECURITY.md, TESTING.md, ADR-…, …)
+└── archive/               # Frozen/completed/obsolete docs
+    └── <PHASE>_<NAME>.md  # E.g. PHASE1_CHECKLIST.md after phase done
+```
+
+## 3. Naming conventions
+
+| Type | Pattern | Example |
+|---|---|---|
+| Living doc | `UPPER_SNAKE.md` or `Title-Case.md` | `INSTALL.md`, `SECURITY.md`, `api-design.md` |
+| Phase checklist (done) | `PHASE<n>_<TOPIC>.md` | `PHASE1_CHECKLIST.md` |
+| ADR | `ADR-NNN-short-slug.md` | `ADR-001-use-mssql.md` |
+| Archived doc | Same as original, just placed in `archive/` |
+
+## 4. README.md (root) contract
+
+`./README.md` is the **only** `.md` at repo root. It must:
+- Be ≤ ~200 lines. Long content → link to `docs/`.
+- Link out (using repo-relative paths) to every living doc under `docs/`.
+- Stay in sync: if you add a new file under `docs/`, add its row to the "Tài liệu" table in `README.md`.
+- Never duplicate content that already lives in `docs/`.
+
+## 5. docs/README.md (index) contract
+
+`docs/README.md` is OPTIONAL but recommended when there are ≥3 docs. It should:
+- Be a short table of contents linking to every sibling file (and to `archive/`).
+- Group docs by topic if helpful (e.g. "Setup", "Phases", "Archive").
+
+## 6. Internal links — keep them valid
+
+When you move or rename any `.md` file:
+1. Grep the whole repo (excluding `node_modules/`) for the old filename.
+2. Update every link found — in other `.md` files AND in code comments that mention the doc.
+3. Re-run the grep to confirm no dangling references remain.
+
+Always use **repo-relative paths** in markdown links (`./docs/INSTALL.md` from root, `../INSTALL.md` from `docs/archive/`). Never use absolute filesystem paths.
+
+## 7. Writing style (Vietnamese project)
+
+- The project docs are currently in Vietnamese. Match the existing tone: short, structured, lots of tables and checkboxes.
+- One H1 per file (the title). Use H2 / H3 for sections.
+- Use emoji sparingly in headings (the codebase uses 🏥 🔐 🚀 ✅ — keep that style if matching an existing doc).
+- Code paths inside backticks: `` `backend/src/app.js` ``.
+- Commands inside fenced blocks with the language tag: ` ```bash `.
+
+## 8. When the user asks to "create docs / write documentation"
+
+Default workflow:
+1. Propose the path under `docs/` (not root) before writing.
+2. If the doc is for a phase already marked ✅ in the plan → suggest putting it in `docs/archive/` instead.
+3. Create the file.
+4. If a root `README.md` exists, add/update the corresponding link row.
+5. Confirm with the user before creating multiple docs in one go.
+
+## 9. Anti-patterns to flag and refuse
+
+- Creating `*.md` at repo root other than `README.md`.
+- Creating a new `CHECKLIST.md` at root for an already-completed phase (use `docs/archive/`).
+- Duplicating content that already exists in another doc — link to it instead.
+- Absolute or `file:///` paths in markdown links.
+- Dead links to docs that have been moved or renamed.

@@ -1,0 +1,128 @@
+---
+description: Hạn chế agent hỏi lại khi đủ ngữ cảnh — tự chọn phương án tốt nhất theo rule/convention dự án và triển khai ngay. Always Apply.
+globs:
+alwaysApply: true
+---
+
+# Proactive Implementation — Hạn chế hỏi lại, triển khai theo phương án tốt nhất
+
+> **TRIỆU CHỨNG:** Agent liên tục hỏi "Bạn muốn đặt tên gì?", "Dùng thư viện nào?", "Format response thế nào?" — phá vỡ dòng chảy, giảm tốc độ làm việc.
+> **MỤC TIÊU:** Agent tự quyết định khi đủ ngữ cảnh, hành động theo best practice + convention dự án, chỉ hỏi lại khi **thật sự** không thể suy luận được.
+
+---
+
+## 1. Nguyên tắc cốt lõi
+
+> **"Đủ ngữ cảnh → quyết + làm. Không đủ → hỏi đúng 1 câu có cấu trúc."**
+
+| Tình huống | Hành động |
+|---|---|
+| Có 1 cách hiển nhiên đúng theo rule/convention dự án | **Làm luôn**, nêu lý do 1 dòng trong response |
+| Có nhiều cách hợp lý nhưng có thể chọn "tốt nhất" dựa trên best practice | **Tự chọn phương án tốt nhất + triển khai**, nêu rõ lý do ngắn gọn |
+| User nói mơ hồ nhưng suy luận được ý định | **Đoán ý định hợp lý nhất + làm**, cuối response ghi: *"Nếu ý bạn khác, nói lại để mình điều chỉnh."* |
+| Thật sự không suy luận được → quyết định ảnh hưởng lớn | **Hỏi 1 câu có cấu trúc** (dùng `AskQuestion`), không hỏi lan man |
+
+---
+
+## 2. Khi KHÔNG được hỏi lại
+
+Agent **tự quyết** trong các trường hợp sau, không cần hỏi:
+
+### 2.1 Đặt tên (đã có rule `naming-conventions.mdc`)
+- Tên biến, hàm, file, column, API endpoint → áp pattern đã quy định, tự đặt.
+- ❌ KHÔNG hỏi: *"Bạn muốn đặt tên function là gì?"*, *"Tên table nên là `NhanVien` hay `Employees`?"*
+- ✅ Tự đặt theo convention, vd: `khoService.js`, `MaNV`, `tenThuoc`, `phieuNhapController`.
+
+### 2.2 Cấu trúc thư mục (đã có rule `structure.mdc`)
+- File mới thuộc loại nào → biết ngay phải đặt ở đâu (`backend/src/services/`, `frontend/src/pages/<feature>/`, `docs/`, …).
+- ❌ KHÔNG hỏi: *"File này nên đặt ở đâu?"*
+- ✅ Áp decision tree mục 5 của `structure.mdc`, nêu path trước khi viết.
+
+### 2.3 Lựa chọn thư viện / pattern phổ biến
+- Validate: `zod` / `joi` (Node), `react-hook-form` + `zod`, Tailwind, axios, …
+- ❌ KHÔNG hỏi: *"Dùng `fetch` hay `axios`?"*, *"Validate bằng thư viện nào?"*
+- ✅ Mặc định chọn thư viện phổ biến nhất + phù hợp stack dự án.
+
+### 2.4 Format response / logging / error
+- Dùng `utils/response.js`, `errorHandler.js` đã có trong project.
+- ❌ KHÔNG hỏi: *"Response format nên trả về thế nào?"*
+- ✅ Bám theo helper đã có.
+
+### 2.5 Comment / docstring tiếng Việt
+- Dự án dùng tiếng Việt có dấu cho comment, doc. Tự viết theo tone đã có.
+
+### 2.6 Seed data, account demo
+- Áp pattern `admin.huong`, `banhang.minh`, `kho.cuong` (rule `naming-conventions.mdc` mục 1).
+- Tự sinh tên nhân viên Việt Nam thật, password `Role@2026`.
+
+---
+
+## 3. Khi ĐƯỢC hỏi lại (ngoại lệ — dùng `AskQuestion`)
+
+Chỉ hỏi khi rơi vào 1 trong 3 nhóm sau:
+
+### 3.1 Phá vỡ convention đã thiết lập
+- User yêu cầu dùng `kho1/kho123`, đặt `.md` ở root, PascalCase JSON field…
+- → Đẩy lại 1 lần bằng `AskQuestion`: giải thích quy ước hiện tại + đề xuất phương án đúng, để user chọn "giữ convention" hay "đi ngược có chủ đích".
+
+### 3.2 Destructive / irreversible action
+- Xóa file, drop table/DB, force push, reset migration, `git reset --hard`, xóa branch remote…
+- → Hỏi xác nhận bằng `AskQuestion` với 2 lựa chọn rõ ràng: "Thực hiện" / "Dừng lại".
+
+### 3.3 Yêu cầu thật sự mơ hồ, nhiều cách đi
+- User nói *"làm giao diện đẹp hơn"* mà không nói rõ phạm vi/trang.
+- User nói *"thêm chức năng thống kê"* mà có 5 loại thống kê khả thi.
+- → Hỏi tối đa **1 câu** bằng `AskQuestion`, kèm 2–4 options đề xuất sẵn (Recommended đầu tiên).
+
+> 🚫 **Cấm:** hỏi lan man, hỏi tuần tự nhiều câu, hỏi thông tin đã có trong rule/context, hỏi ý kiến về quyết định nhỏ (format date, indent, …).
+
+---
+
+## 4. Cách ra quyết định khi có nhiều phương án
+
+Khi có 2+ cách hợp lý, chọn theo thứ tự ưu tiên:
+
+1. **Convention dự án đã có** (đọc rule + code hiện tại) — ưu tiên #1.
+2. **Best practice cộng đồng** (OWASP cho security, RESTful cho API, Tailwind cho FE…).
+3. **Đơn giản nhất** trong các phương án đủ tốt (KISS).
+4. **Ít thay đổi nhất** với code hiện tại (tránh refactor lớn khi không cần).
+
+→ Sau khi chọn, **triển khai luôn**, ghi 1 dòng lý do trong response:
+> *"Chọn `react-hook-form` + `zod` vì đã có sẵn trong `frontend/package.json` và stack FE đang dùng."*
+
+---
+
+## 5. Template phản hồi mặc định
+
+Mỗi khi tự quyết một điểm không hiển nhiên, dùng format:
+
+```
+Đã làm: <mô tả ngắn>
+Quyết định: <lựa chọn>
+Lý do: <1 câu theo thứ tự ưu tiên mục 4>
+Nếu ý bạn khác, nói lại để mình điều chỉnh.
+```
+
+Ví dụ:
+> Đã làm: thêm endpoint `POST /api/phieu-nhap` với payload `camelCase`.
+> Quyết định: dùng `zod` để validate thay vì `joi`.
+> Lý do: `frontend` đang dùng `react-hook-form` + `zod`, dùng cùng schema giúp sync FE↔BE.
+> Nếu ý bạn khác, nói lại để mình điều chỉnh.
+
+---
+
+## 6. Checklist trước khi hỏi
+
+Trước khi gọi `AskQuestion`, tự kiểm:
+
+- [ ] Thông tin này đã có trong rule (`structure.mdc`, `naming-conventions.mdc`, `docs/`) chưa? → Đọc lại, không hỏi.
+- [ ] Có thể suy luận từ code hiện tại / context trước đó không? → Suy luận, không hỏi.
+- [ ] Có phải destructive action không? → Hỏi.
+- [ ] Có >2 cách đi hợp lý mà user chưa ngụ ý chọn cách nào không? → Hỏi 1 câu có options.
+- [ ] Đã gộp hết câu hỏi vào 1 lần `AskQuestion` chưa? (Không hỏi tuần tự.)
+
+---
+
+## 7. Phản hồi khi user muốn agent hỏi chi tiết hơn
+
+Nếu user nói *"lần sau hỏi ý kiến mình trước khi sửa"* → ghi nhớ preference trong session đó, hỏi xác nhận trước khi hành động. KHÔNG bật/tắt rule này vĩnh viễn — đây là rule mặc định cho mọi task.

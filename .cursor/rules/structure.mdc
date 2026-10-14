@@ -1,0 +1,133 @@
+---
+description: Project structure conventions for SecurePharma (folder layout, naming, where new files belong)
+globs:
+alwaysApply: true
+---
+
+# SecurePharma — Project Structure Rules
+
+> Always apply on every file operation. These rules define WHERE new code/config/docs must live so the repo stays clean and consistent.
+
+## 1. Top-level layout (do not break)
+
+```
+SecurePharma/
+├── backend/                # Node.js + Express API (MUST stay here)
+├── frontend/               # React + Vite client   (MUST stay here)
+├── docs/                   # ALL project documentation (.md) — NOT root
+│   ├── README.md           # Index of docs/ folder
+│   ├── *.md                # Living docs (plan, features, install, …)
+│   └── archive/            # Completed/obsolete phase checklists
+├── .cursor/rules/          # Cursor rules (this folder)
+├── .agents/skills/         # Agent skills (read-only reference)
+├── README.md               # Single entry point at repo root ONLY
+├── .env                    # Backend env (NEVER commit secrets)
+├── .gitignore
+└── package.json            # Workspace root only if multi-package; otherwise backend/ or frontend/
+```
+
+## 2. Markdown / documentation placement
+
+**HARD RULE:** `.md` files are NOT allowed at repo root except `README.md`.
+
+| File type | Where it goes |
+|---|---|
+| Project entry point / overview | `./README.md` (root, single file) |
+| Living docs (plan, features, install, ADR, RFC, guide) | `./docs/<NAME>.md` |
+| Completed phase checklist / obsolete doc | `./docs/archive/<NAME>.md` |
+| Skill / agent instructions | `./.agents/skills/<name>/SKILL.md` |
+| Cursor rules | `./.cursor/rules/<scope>.mdc` |
+
+When creating or moving a `.md` file:
+- If it documents the project → put it in `docs/`.
+- If the doc is for a past phase and no longer maintained → put it in `docs/archive/`.
+- Never create `*.md` at repo root other than `README.md`. If asked to, propose the `docs/` location first.
+
+## 3. Backend folder layout (`backend/`)
+
+```
+backend/
+├── src/
+│   ├── config/         # db.js, env loader, third-party config
+│   ├── middleware/     # auth, rbac, errorHandler, xss, rateLimit
+│   ├── routes/         # one file per resource group (auth, products, sales, …)
+│   ├── controllers/    # thin handlers calling services
+│   ├── services/       # business logic + DB queries (parameterized only)
+│   ├── utils/          # response.js, logger.js, validators
+│   └── app.js          # Express app composition
+│   └── server.js       # entry point (graceful shutdown)
+├── database/           # *.sql scripts (schema, seed) — committed
+├── .env                # local secrets — gitignored
+├── .env.example        # committed template
+└── package.json
+```
+
+Naming:
+- Files: `camelCase.js` (e.g. `authService.js`, `errorHandler.js`).
+- Route files: plural resource name (`products.js`, `sales.js`).
+- SQL scripts: `NN_description.sql` numbered in execution order (`01_create_tables.sql`).
+
+## 4. Frontend folder layout (`frontend/`)
+
+```
+frontend/src/
+├── api/                # axios instance + endpoint wrappers
+├── components/         # shared UI (group by domain: ui/, layout/, forms/)
+│   ├── ui/             # generic primitives (Button, Input, Modal)
+│   └── layout/         # Header, Sidebar, ProtectedRoute
+├── contexts/           # React contexts (Auth, Theme, …)
+├── pages/              # route-level screens, grouped by feature
+│   ├── auth/
+│   ├── dashboard/
+│   └── <feature>/
+├── hooks/              # custom hooks (useAuth, useDebounce, …)
+├── services/           # client-side service wrappers calling api/
+├── utils/              # format.js, constants.js, helpers
+├── router/             # route definitions
+├── App.jsx
+└── main.jsx
+```
+
+Naming:
+- Components: `PascalCase.jsx` (e.g. `LoginForm.jsx`, `DashboardPage.jsx`).
+- Hooks: `useXxx.js` in `hooks/`.
+- Pages: `XxxPage.jsx` colocated with feature folder.
+- One default export per component file.
+
+## 5. Where to put a new file (decision tree)
+
+When the user asks to "add/create/write a file":
+1. Is it documentation (`.md`)? → use Section 2.
+2. Is it backend code?
+   - HTTP handler / route → `backend/src/routes/`
+   - Business logic / DB query → `backend/src/services/`
+   - Request middleware → `backend/src/middleware/`
+   - Pure helper → `backend/src/utils/`
+3. Is it frontend code?
+   - Screen reachable by URL → `frontend/src/pages/<feature>/<NamePage>.jsx`
+   - Reusable visual → `frontend/src/components/ui/`
+   - Layout chrome → `frontend/src/components/layout/`
+   - API call → `frontend/src/api/` (axios) or `frontend/src/services/`
+   - React state shared across tree → `frontend/src/contexts/`
+   - Reusable hook → `frontend/src/hooks/`
+4. Is it a Cursor rule? → `.cursor/rules/<scope>.mdc`.
+5. If ambiguous → ASK before creating.
+
+## 6. Files that must NEVER be created at repo root
+
+- `*.md` other than `README.md` (use `docs/`).
+- `.env` (use `backend/.env`; commit only `.env.example`).
+- Source code of any kind (always under `backend/src` or `frontend/src`).
+- `node_modules/` (already gitignored; never edit there).
+
+## 7. When refactoring / moving files
+
+If you move a file, you MUST also:
+- Update every relative import path that referenced the old location.
+- Update every markdown link (including in `README.md` and other docs).
+- Run a quick grep for the old filename to confirm no dangling references.
+
+## 8. Response style
+
+- When proposing where to put a new file, state the path explicitly (e.g. "I'll add it at `backend/src/services/productService.js`") before writing.
+- If the user requests a location that violates these rules, push back briefly and propose the correct path.

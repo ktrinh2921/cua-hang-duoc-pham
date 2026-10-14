@@ -1,0 +1,986 @@
+Lời cảm ơn
+Không có sự thành công nào là không gắn liền với sự nỗ lực, cố gắng song hành với
+đó là sự hỗ trợ và giúp đỡ cả trực tiếp lẫn gián tiếp. Trong suốt khoảng thời gian thực hiện
+đề tài trên, nhóm chúng em đã nhận được rất nhiều những sự hỗ trợ đến từ bạn bè, thầy cô.
+Đặc biệt đó là những lời nhận xét, góp ý cực kỳ quý giá từ cô Thái Thị Thanh Vân. Chúng
+em xin cảm ơn cô không chỉ vì những lời nhận xét giúp chúng em có thể hoàn thành bài
+tập của mình mà còn vì những góp ý bổ ích từ cô. Qua đó mang lại cho chúng em những
+kiến thức gắn liền với thực tiễn và truyền cho chúng em sự say mê với môn Thực tập cơ sở
+nói riêng và ngành An toàn thông tin nói chung.
+Với tất cả những sự giúp đỡ đó và sự cố gắng của các thành viên trong nhóm, chúng
+em đã hoàn thành được đề tài “Xây dựng website quản lý cửa hàng dược phẩm có tích hợp
+giải pháp an toàn ” của mình.Tuy nhiên, do lần đầu tìm hiểu một đề tài mang tính thực tế
+cao trong một khoảng thời gian có hạn cũng như lượng kiến thức vẫn còn rất hạn chế nên
+việc còn nhiều thiếu sót là điều không thể tránh khỏi. Chúng em rất mong vẫn sẽ tiếp tục
+nhận được những sự nhận xét, đóng góp ý kiến của thầy cô cũng như là các bạn để có thể
+biết được mình còn thiếu sót ở đâu. Từ đó, có những sự điều chỉnh để hoàn thiện hơn đề
+tài của mình.
+Một lần nữa, chúng em xin chân thành cảm ơn những sự hỗ trợ, giúp đỡ, những lời
+nhận xét, góp ý đến từ bạn bè và đặc biệt là cô Vân. Cuối cùng, chúng em xin kính chúc
+cô và gia đình luôn hạnh phúc, dồi dào sức khỏe để tiếp tục sự nghiệp truyền lửa nhiệt
+huyết cho thế hệ tiếp theo, chúc các bạn luôn giữ được cho mình đam mê với ngành an
+toàn thông tin và vững bước trên con đường mà mình đã chọn.
+Chúng em xin chân thành cảm ơn!
+
+-- 1 of 52 --
+
+MỤC LỤC
+DANH MỤC CÁC TỪ VIẾT TẮT
+DANH MỤC CÁC BẢNG BIỂU
+DANH MỤC CÁC HÌNH VẼ
+LỜI CẢM ƠN
+MỞ ĐẦU
+CHƯƠNG 1.CƠ SỞ LÝ THUYẾT VÀ CÔNG CỤ SỬ DỤNG
+1.1 Lập kế hoạch hoạt động
+1.2Tổng quan về hiệu thuốc
+1.3 Cách thức khảo sát
+1.4 Đánh giá hiện trạng
+1.5 Cơ sở lý thuyết
+1.5.1 Phân tích thiết kế hướng đối tượng
+1.5.2 Ngôn ngữ mô hình hóa UML
+1.5.3 Cơ sở dữ liêu SQL Server
+1.6 Công cụ sử dụng
+1.6.1 Microsoft SQL Server 2019
+1.6.2 StarUML
+1.6.3 Các công cụ lập trình sử dụng trong xây dựng Website
+1.7Tổng kết chương
+CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG
+2.1 Phân tích yêu cầu người dùng
+2.1.1 Yêu cầu chức năng
+2.1.2 Yêu cầu phi chức năng
+2.2 Biểu đồ Use Case
+2.3 Biểu đồ tuần tự
+2.4 Biểu đồ hoạt động
+
+-- 2 of 52 --
+
+2.5 Thiết kế Cơ sở dữ liệu
+2.5.1 Biểu đồ quan hệ thực thể
+2.5.2 Mô tả chi tiết các bảng trong CSDL
+2.6 Tổng kết chương
+CHƯƠNG 3:XÂY DỰNG WEBSITE VÀ ĐÁNH GIÁ
+3.1 Thiết kế giao diện và demo Website
+3.1.1 Thiết kế trang chủ/Bảng điều khiển (Dashboard)
+3.1.2 Giao diện quản lý kho và tìm kiếm thuốc
+3.1.3 Giao diện biểu đồ thống kê doanh thu
+3.2 Triển khai hệ thống
+3.2.1 Triển khai Frontend
+3.2.2 Triển khai Backend
+3.2.3 Kết nối cơ sở dữ liệu
+3.2.4 Xử lý các luồng chính
+3.3 Tích hợp bảo mật
+3.3.1 Phân quyền RBAC
+3.3.2 Mã hóa dữ liệu
+3.3.3 Cơ chế tấn công XSS/SQL Injection
+3.4 Thử nghiệm và đánh giá
+3.4.1 Kiểm thử chức năng
+3.4.2 Kiểm thử bảo mật
+3.4.3 Đánh giá kết quả,ưu điểm và hạn chế
+3.5 Tổng kết chương
+KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+TÀI LIỆU THAM KHẢO
+PHỤ LỤC
+CHƯƠNG 1: CƠ SỞ LÝ THUYẾT VÀ CÔNG CỤ SỬ DỤNG
+1.1 Lập kế hoạch hoạt động
+
+-- 3 of 52 --
+
+STT Thời gian Nội dung thực hiện Kết quả dự kiến
+1 Tuần 1 Lập kế hoạch hoạt động và khảo sát hiện
+trạng: tổng quan về cửa hàng dược phẩm; tìm
+hiểu yêu cầu của nhân viên/quản lý; làm rõ
+quy trình nghiệp vụ và xác định quy trình hệ
+thống.
+Tổng quan đề tài;
+phạm vi; danh sách
+yêu cầu sơ bộ; mô tả
+quy trình nghiệp vụ.
+2 Tuần 2 Phân tích yêu cầu (chức năng/phi chức năng);
+xác định tác nhân, use case; đặc tả RBAC và
+nguyên tắc đặc quyền tối thiểu.
+Danh mục yêu cầu;
+bộ use case mức cao;
+đặc tả RBAC; danh
+sách rủi ro đe dọa
+theo
+OWASP/STRIDE.
+3 Tuần 3 Thiết kế hệ thống: kiến trúc; thiết kế CSDL an
+toàn (AES-256, BCrypt/Argon2, audit log);
+thiết kế UI/UX và RESTful API; tiêu chuẩn
+HTTPS; mô tả vai trò – quyền chi tiết.
+Sơ đồ kiến trúc;
+ERD/bảng dữ
+liệu; prototype; ma
+trận phân quyền; tiêu
+chí bảo mật dữ liệu
+và phiên.
+4 Tuần 4 Xây dựng chức năng và bảo mật: kho dược,
+lô/hạn dùng, nhập hàng, bán hàng, sản phẩm,
+nhà cung cấp, nhân viên, báo cáo; tích hợp
+MFA, JWT/Session token bảo
+mật; validation; secure coding; audit log và
+cảnh báo.
+Web demo vận hành
+các luồng chính; phân
+quyền hoạt động; dữ
+liệu được
+mã hoá/băm phù hợp;
+có audit log.
+
+-- 4 of 52 --
+
+5 Tuần 5 Kiểm thử: kiểm thử chức năng; kiểm thử dữ
+liệu; kiểm thử an toàn (SQL Injection, XSS,
+CSRF, truy cập trái phép); rà soát cấu hình
+JWT/Session; sửa lỗi.
+Kịch bản test & kết
+quả; danh sách lỗi;
+bản sửa; báo cáo
+kiểm thử và đối chiếu
+yêu cầu bảo mật.
+6 Tuần 6 Đánh giá – tối ưu: cải thiện UI/UX; tối ưu truy
+vấn; hoàn thiện báo cáo chi tiết; tối
+ưu logging/audit; tổng hợp đánh giá hiệu năng
+và an toàn.
+Bản ổn định; trải
+nghiệm tốt hơn; tối
+ưu hiệu năng; tài liệu
+đánh giá và nhận xét.
+7 Tuần 7 Hoàn thiện báo cáo và demo: chuẩn hóa tài
+liệu; chuẩn bị trình bày; đóng gói sản phẩm.
+Báo cáo ; mã nguồn
+& CSDL; demo/slide;
+phụ lục.
+1.2 Tổng quan
+Khảo sát nhà thuốc
+Tên nhà thuốc: Nhà thuốc Huệ Vinh
+Chủ hiệu thuốc: Nguyễn Thị Hương
+Địa chỉ: A12 TT5 Khu đô thị Văn Quán – Yên Phúc, phường Hà Đông.
+Hoạt động từ: 2024
+Quy mô: Hiệu thuốc gia đình (vừa và nhỏ)
+Mục đích hoạt động: Phân phối các loại thuốc, thực phẩm chức năng, vật tư y tế. Hỗ trợ
+tư vấn các vấn đề bệnh lý nhẹ thông thường, kịp thời và an toàn đưa ra các loại thuốc phù
+hợp để điều trị; loại thuốc kê đơn, thuốc không kê đơn cho người dân xung quanh giúp
+giảm tải cho các bệnh viện tuyến trên.
+Số lượng nhân viên: 1 Quản lý ( Chủ hiệu thuốc ) và 2 nhân viên
+Thời gian làm việc: 7h- 22h
+
+-- 5 of 52 --
+
+1.3 Cách thức khảo sát
+Hình thức: Phỏng vấn trực tiếp, quan sát, phân tích và tổng hợp dữ liệu
+Đối tượng: Chủ hiệu, dược sĩ bán thuốc (nhân viên)
+Nội dung phỏng vấn:
+Quy trình bán thuốc
++ Trường hợp khách lẻ đến mua trực tiếp: Khách nói về các triệu chứng gặp phải (đau
+đầu, đau bụng, sốt,...) dược sĩ sẽ hỏi rõ về thời gian bắt đầu các triệu chứng, mức độ đau,
+tiền sử bệnh, có dị ứng thành phần nào của thuốc không. Sau đó dược sĩ chẩn đoán, tư
+vấn và chọn loại thuốc điều trị phù hợp nhất, cắt liều, chia vào túi zip nhỏ, dùng bút dạ
+ghi rõ về liều uống (liều dùng sáng tối, trước ăn hay sau ăn,..) lưu ý thêm nếu triệu chứng
+không giảm sau thời gian uống thuốc chỉ định, tính toán và ghi tên thuốc vào sổ sách,
+cuối cùng là giao cho khách và thu tiền.
++ Trường hợp mua theo dược sĩ kê hoặc khách mang đơn thuốc do bệnh viện kê đến: Sau
+khi khách đưa đơn thuốc, dược sĩ kiểm tra lại đơn sau đó đi tìm từng loại thuốc theo yêu
+cầu, tính toán tiền thuốc và ghi thuốc vào sổ sách, sau đó giao thuốc cho khách và thu
+tiền. Nếu không có loại thuốc trong đơn sẽ ghi chú lại cho khách hàng hoặc giải thích, tư
+vấn cho khách đổi sang loại thuốc khác có cùng hoạt chất hoặc công dụng tương đương.
+- Thông tin bán thuốc được nhân viên ghi chép vào cuốn “Sổ bán hàng” để trên quầy gồm
+6 cột: STT, tên thuốc, số lượng, tổng tiền, ghi chú. Sau một ngày sẽ kẻ ngang hoặc sang
+trang mới.
+Quy trình hóa đơn:
++ Khi khách hàng mua thuốc không xuất hóa đơn, nhân viên kê thuốc, tính tiền sau đó
+báo giá rồi thu tiền mặt hoặc chuyển khoản.
++ Chỉ dùng hóa đơn cho nhập hàng
+Quy trình nhập kho:
++ Nhân viên kiểm tra quầy và kho thuốc định kì, nếu còn đủ đáp ứng nhu cầu bán thì kết
+thúc. Ngược lại sẽ lập phiếu đề nghị bổ sung thuốc hoặc vật tư với số lượng cụ thể cho
+từng loại thuốc đã bán sắp hết hoặc sắp hết hạn. Chủ hiệu kiểm tra tính hợp lý của phiếu
+sau đó liên hệ với các nhà cung cấp thuốc để đặt thuốc. Khi hàng giao đến kèm theo hóa
+
+-- 6 of 52 --
+
+đơn/ phiếu giao hàng. Nhân viên tiến hàng rà soát, đối chiếu với phiếu kiểm hàng và nhận
+hàng, ghi thông tin thuốc vào sổ kho/ bảng excel để lưu thông tin thuốc, ngày nhập hàng,
+nhà cung cấp.
+Quản lý tài chính:
++ Thu, chi của cửa hàng sẽ được nhân viên ghi vào sổ theo ngày.
++ Sau khi kết thúc ca làm: Nhân viên chốt ca sẽ tổng hợp doanh thu đối chiếu ghi chép
+trong sổ bán hàng với doanh thu sau đó bàn giao lại cho nhân viên ca sau và báo cáo kết
+ca vào trong nhóm zalo. Chủ hiệu thuốc hệ thống lại doanh thu theo tháng, quý, năm.
++ Ai là người có quyền xem sổ sách tài chính: Chỉ có chủ hiệu được biết mật khẩu để mở
+file excel trên máy tính/ sổ tổng hợp. Nhân viên bán thuốc chỉ được ghi chép vào quyển
+bán lẻ trên quầy.
+Quản lý nhân sự
++ Chủ hiệu theo dõi, chấm công cho nhân viên, tính giờ làm, tính lương và thanh toán
+lương cho nhân viên.
++ Nhân viên: Đăng kí ca làm theo từng tuần, đi làm đúng giờ, có trách nhiệm, trung thực,
+ghi rõ thu chi, lịch sử bán thuốc.
+1.4 Đánh giá hiện trạng
+a) Ưu điểm:
+Là một cửa hàng dược phẩm gia đình uy tín, phong phú các loại thuốc, vật tư y tế. Công
+việc đã được phân chia, tổ chức rõ ràng, nhân viên có kinh nghiệm. Cửa hàng vẫn có thể
+vận hành trơn tru, đón khách và ghi chép doanh thu bình thường ngay cả trong các tình
+huống sự cố bất khả kháng như mất điện diện rộng hay đứt kết nối Internet.
+b) Nhược điểm:
+Việc quản lý cửa hàng chủ yếu được ghi chép trên giấy tờ nên sẽ tồn tại các nhược điểm
+như:
+- Rủi ro sai sót về nhập hàng: Việc ghi chép thủ công rất dễ dẫn đến sai sót trong việc ghi
+nhận số lượng và đơn giá.
+- Khó khăn trong quản lý lô hàng và hạn sử dụng: để biết tình trạng thuốc tồn đọng, cận
+date hoặc quá hạn sử dụng nhân viên sẽ phải kiểm tra thủ công trên kệ
+
+-- 7 of 52 --
+
+- Hiệu suất bán hàng hạn chế: Trong các khung giờ cao điểm, việc tính toán hóa đơn thủ
+công ảnh hưởng đến thời gian tư vấn, hỗ trợ khách, giảm tốc độ phục vụ và có khả năng
+sai sót về tính toán chi phí thuốc, tổng hợp doanh thu cuối ngày tốn rất nhiều thời gian
+- Hạn chế trong việc lưu trữ hồ sơ y tế và chăm sóc khách hàng: Chưa có phương thức
+lưu trữ thông tin khách hàng để hỗ trợ, hệ thống hóa lịch sử mua thuốc, các bệnh lý nền
+hay tiền sử dị ứng.
+- Rủi ro mất mát dữ liệu: thông tin lưu sổ sách dễ nhầm lẫn nếu trình bày không sạch sẽ,
+hợp lý; sổ sách vật lý có nguy cơ bị hỏng hóc, rách, thất lạc, ẩm mốc mà hoàn toàn không
+có phương án sao lưu.
+- Tra cứu và báo cáo thủ công kém hiệu quả: Việc lục tìm lại một hóa đơn cũ, kiểm tra
+lịch sử giá nhập của một nhà cung cấp cách đây vài tháng sẽ rất tốn công sức nếu là sổ
+sách viết tay.
+c) Đề xuất giải pháp:
+Xây dựng Website quản lý toàn diện, tự động hóa quy trình quản lý như:
+- Quản lý tồn kho chính xác: Theo dõi số lượng thuốc, hạn sử dụng, lô hàng, đơn
+vị tính và tình trạng nhập – xuất – tồn theo thời gian thực.
+- Chăm sóc khách hàng: Lưu trữ hồ sơ khách hàng, lịch sử mua thuốc, nhu cầu sử
+dụng và thông tin tư vấn trước đó.
+- Kiểm soát tài chính: Cung cấp báo cáo chi tiết về doanh thu, lợi nhuận, chi phí và
+các chỉ số kinh doanh quan trọng.
+- Đảm bảo tuân thủ quy định ngành dược: Hỗ trợ quản lý dữ liệu thuốc, chứng từ,
+hóa đơn, lô hàng và quy trình bán thuốc theo đúng yêu cầu quản lý.
+1.5 Cơ sở lý thuyết
+1.5.1 Phân tích thiết kế hướng đối tượng
+- Phân tích thiết kế hướng đối tượng là một phương pháp phân tích và thiết kế hệ
+thống máy tính bằng cách áp dụng tư duy hướng đối tượng và sử dụng mô hình hóa trực
+quan trong suốt quá trình phát triển . Trong một hệ thống website, phương pháp này giúp
+mô tả rõ các thành phần nghiệp vụ, từ đó dễ dàng xây dựng kiến trúc chương trình, tổ chức
+mã nguồn và mở rộng chức năng về sau.
+
+-- 8 of 52 --
+
+- Khác với cách tiếp cận truyền thống chỉ tập trung vào chức năng, hướng đối tượng
+xem hệ thống như một tập hợp các thực thể có quan hệ với nhau và cùng phối hợp để thực
+hiện nghiệp vụ. Đối với website quản lý cửa hàng kinh doanh dược phẩm, các đối tượng
+có thể bao gồm: thuốc, khách hàng, nhân viên, hóa đơn, nhà cung cấp, phiếu nhập, kho
+hàng, tài khoản đăng nhập, phân quyền,... Mỗi đối tượng này có thể được mô hình hóa
+thành các lớp trong chương trình, giúp hệ thống được xây dựng rõ ràng và có tổ chức.
+1.5..2 Ngôn ngữ mô hình hóa UML
+- UML (Unified Modeling Language) là một ngôn ngữ mô hình hóa cho phép cụ
+thể hóa (specifying), trực quan hóa (visualizing), xây dựng (constructing) và lập tư liệu
+(documenting) các hệ thống thông tin sử dụng khái niệm đối tượng.
+- UML được sử dụng để mô tả các thành phần, cấu trúc và hoạt động của hệ thống
+một cách trực quan, giúp hỗ trợ quá trình phân tích, thiết kế và xây dựng phần mềm. Trong
+đề tài, UML được sử dụng để mô hình hóa hệ thống quản lý cửa hàng kinh doanh dược
+phẩm, làm cơ sở cho việc phân tích yêu cầu và thiết kế hệ thống.
+- Các biểu đồ UML ứng dụng trong hệ thống:
++ Biểu đồ Use Case: Mô tả các chức năng của website từ góc nhìn của tác
+nhân (Chủ hiệu, nhân viên) đối với các nghiệp vụ như nhập thuốc và quản lý kho
++ Biểu đồ lớp (Class Diagram): Biểu diễn cấu trúc tĩnh của hệ thống gồm các
+lớp đối tượng (Thuoc, HoaDon, NhanVien), các thuộc tính, phương thức và mối
+quan hệ giữa chúng.
++ Biểu đồ tuần tự (Sequence Diagram): Trực quan hóa chuỗi tương tác và
+thông điệp truyền qua lại giữa các đối tượng theo thứ tự thời gian cho từng kịch bản
+nghiệp vụ (ví dụ: quy trình thanh toán hóa đơn).
++ Biểu đồ hoạt động (Activity Diagram): Biểu diễn luồng công việc
+(workflow) và logic xử lý của từng chức năng từ khi bắt đầu đến khi hoàn thành.
+1.5.3 Cơ sở dữ liệu SQL Server
+- Microsoft SQL Server là một hệ quản trị cơ sở dữ liệu quan hệ (RDBMS -
+Relational Database Management System) do Microsoft phát triển. SQL Server sử dụng
+ngôn ngữ truy vấn T-SQL (Transact-SQL) để thực hiện các thao tác khởi tạo, lưu trữ, cập
+nhật, truy xuất và quản lý dữ liệu một cách an toàn, nhất quán và hiệu quả.
+
+-- 9 of 52 --
+
+- Các thành phần cốt lõi trong SQL Server
++ Bảng (Table): Là nơi lưu trữ dữ liệu theo cấu trúc gồm các dòng (bản ghi)
+và cột (thuộc tính).
++ Khóa chính (Primary Key): Là thuộc tính hoặc tập hợp thuộc tính dùng để
+định danh duy nhất mỗi bản ghi trong bảng (ví dụ: MaThuoc, MaHoaDon).
++ Khóa ngoại (Foreign Key): Là thuộc tính dùng để thiết lập mối quan hệ
+giữa các bảng, góp phần đảm bảo tính toàn vẹn và nhất quán của dữ liệu (ví dụ:
+MaNhanVien trong bảng HoaDon).
++ Thủ tục lưu trữ (Stored Procedure) và Ràng buộc (Constraint): Stored
+Procedure là các đoạn mã T-SQL được lưu trữ trên máy chủ nhằm thực hiện các thao tác
+xử lý hoặc truy vấn dữ liệu. Constraint là các quy tắc được áp dụng cho dữ liệu nhằm kiểm
+soát và đảm bảo tính hợp lệ của thông tin trong cơ sở dữ liệu.
+-SQL Server đóng vai trò là cơ sở dữ liệu trung tâm, dùng để lưu trữ và quản lý toàn
+bộ dữ liệu của website quản lý cửa hàng kinh doanh dược phẩm, bao gồm:
++ Quản lý dữ liệu: Lưu trữ thông tin thuốc, danh mục thuốc, nhà cung cấp,
+nhân viên, hóa đơn và các giao dịch nhập - xuất kho.
++ Bảo mật và phân quyền: Hỗ trợ kiểm soát quyền truy cập dữ liệu, giúp
+phân quyền phù hợp cho các nhóm người dùng như Chủ hiệu và Nhân viên.
++ Đảm bảo tính toàn vẹn dữ liệu: Sử dụng khóa chính, khóa ngoại và các
+ràng buộc để hạn chế dữ liệu không hợp lệ, đồng thời đảm bảo mối quan hệ giữa
+các bảng.
++ Hỗ trợ quản lý giao dịch: Đảm bảo các thao tác như nhập thuốc, xuất kho
+và thanh toán hóa đơn được xử lý chính xác, hạn chế tình trạng sai lệch hoặc mất
+đồng bộ dữ liệu.
+1.6.Công cụ sử dụng
+Trong quá trình thực hiện đề tài “Phân tích thiết kế và xây dựng hệ thống quản lý
+cửa hàng kinh doanh dược phẩm”, nhóm chúng em sử dụng ba công cụ chính
+gồm Microsoft SQL Server 2019, Microsoft Word 2016 và StarUML. Mỗi công cụ được
+sử dụng cho một công việc khác nhau, hỗ trợ nhóm trong quá trình phân tích, thiết kế và
+hoàn thiện hệ thống.
+
+-- 10 of 52 --
+
+1.6.1 Microsoft SQL Server 2019
+- Giới thiệu chung:
++ Microsoft SQL Server 2019 là hệ quản trị cơ sở dữ liệu do Microsoft phát triển.
+Phần mềm được sử dụng để tạo, lưu trữ, quản lý và truy vấn dữ liệu cho các hệ thống và
+ứng dụng.
++ SQL Server 2019 hỗ trợ người dùng tạo cơ sở dữ liệu, xây dựng các bảng, thiết
+lập mối liên hệ giữa các bảng và thực hiện các thao tác với dữ liệu như thêm, sửa, xóa và
+tìm kiếm. Ngoài ra, SQL Server còn hỗ trợ khóa chính, khóa ngoại và các ràng buộc dữ
+liệu, giúp hạn chế sai sót và đảm bảo dữ liệu được quản lý thống nhất.
+- Các chức năng chính được sử dụng:
++ Tạo và quản lý cơ sở dữ liệu.
++ Tạo các bảng và khai báo các trường dữ liệu.
++ Thiết lập khóa chính và khóa ngoại.
++ Tạo mối liên hệ giữa các bảng.
++ Thêm, sửa, xóa và tìm kiếm dữ liệu.
++ Thực hiện các câu lệnh SQL để lấy thông tin cần thiết.
++ Quản lý và kiểm tra dữ liệu trong hệ thống.
+- Ứng dụng trong đề tài:
+Trong hệ thống website quản lý dược phẩm, SQL Server 2019 được nhóm sử dụng
+để xây dựng và quản lý cơ sở dữ liệu của website.
+Cơ sở dữ liệu được thiết kế để lưu trữ các thông tin cần thiết cho hoạt động quản lý dược
+phẩm, chẳng hạn như:
++ Thuốc: Mã thuốc, tên thuốc, loại thuốc, đơn vị tính, giá bán, số lượng, hạn sử
+dụng,...
++ Loại thuốc: mã loại và tên loại thuốc.
++ Nhà cung cấp: mã nhà cung cấp, tên nhà cung cấp, địa chỉ, số điện thoại,...
++ Nhân viên: thông tin nhân viên sử dụng và quản lý hệ thống.
++ Phiếu nhập: thông tin các lần nhập thuốc.
+
+-- 11 of 52 --
+
++ Chi tiết phiếu nhập: thông tin thuốc, số lượng và giá nhập.
++ Hóa đơn: thông tin các lần bán thuốc.
++ Chi tiết hóa đơn: thông tin thuốc, số lượng, đơn giá và thành tiền.
+- Các bảng được liên kết với nhau thông qua khóa chính và khóa ngoại. Điều này giúp
+dữ liệu giữa các bảng có sự liên kết và hạn chế việc nhập dữ liệu sai hoặc không đầy đủ.
+SQL Server cũng được sử dụng để phục vụ các chức năng chính của Website. Ví dụ, khi
+nhân viên nhập thuốc, hệ thống lưu thông tin phiếu nhập và cập nhật số lượng thuốc
+trong kho. Khi nhân viên bán thuốc, hệ thống tạo hóa đơn, lưu thông tin chi tiết hóa đơn
+và cập nhật lại số lượng thuốc còn trong kho.
+- Ngoài ra, cơ sở dữ liệu còn được sử dụng cho các chức năng quản lý thuốc, tìm kiếm
+thuốc, quản lý kho, quản lý nhà cung cấp, quản lý khách hàng, quản lý hóa đơn và thống
+kê.
+- Như vậy, Microsoft SQL Server 2019 là công cụ được nhóm sử dụng để lưu trữ và
+quản lý toàn bộ dữ liệu của Website quản lý dược phẩm, đồng thời cung cấp dữ liệu cho
+các chức năng của hệ thống.
+1.6.2. Microsoft Word 2016
+- Giới thiệu chung:
+Microsoft Word 2016 là phần mềm soạn thảo văn bản thuộc bộ Microsoft Office 2016.
+Word được sử dụng để tạo, chỉnh sửa và trình bày các loại tài liệu.
+Phần mềm cung cấp các chức năng như định dạng văn bản, tạo bảng, chèn hình ảnh, đánh
+số trang, tạo mục lục và trình bày tài liệu. Đây là công cụ phù hợp để soạn thảo các báo
+cáo có nhiều nội dung và hình ảnh.
+- Các chức năng chính được sử dụng:
++ Soạn thảo và chỉnh sửa nội dung.
++ Định dạng tiêu đề và các phần trong báo cáo.
++ Tạo mục lục.
++ Chèn hình ảnh và bảng biểu.
++ Đánh số trang.
++ Chú thích hình ảnh và bảng.
+
+-- 12 of 52 --
+
++ Định dạng báo cáo theo yêu cầu.
+- Ứng dụng trong đề tài:
+Trong đề tài Website quản lý dược phẩm, Microsoft Word 2016 được nhóm sử dụng
+để soạn thảo và trình bày báo cáo phân tích và thiết kế hệ thống.
+Cụ thể, Word được sử dụng để trình bày các nội dung như:
++ Giới thiệu đề tài và bài toán quản lý dược phẩm.
++ Phân tích yêu cầu của hệ thống.
++ Phân tích các chức năng của Website.
++ Trình bày các biểu đồ được xây dựng bằng StarUML.
++ Trình bày thiết kế cơ sở dữ liệu.
++ Trình bày thiết kế giao diện Website.
++ Trình bày các chức năng đã xây dựng.
++ Đưa hình ảnh giao diện Website vào báo cáo.
++ Trình bày quá trình kiểm thử và đánh giá hệ thống.
+Ví dụ, các biểu đồ Use Case, Activity, Sequence và Class được nhóm xây dựng bằng
+StarUML sẽ được đưa vào Word để trình bày và giải thích.
+- Các hình ảnh về giao diện đăng nhập, quản lý thuốc, quản lý kho, nhập thuốc, bán
+thuốc, hóa đơn và thống kê cũng được đưa vào báo cáo để minh họa cho kết quả thiết kế
+và xây dựng hệ thống.
+- Như vậy, Microsoft Word 2016 được sử dụng để tổng hợp và trình bày toàn bộ nội
+dung của đề tài, giúp quá trình phân tích, thiết kế và xây dựng website được thể hiện rõ
+ràng trong báo cáo.
+1.6.3. StarUML
+- Giới thiệu chung:
+StarUML là phần mềm hỗ trợ phân tích và thiết kế hệ thống bằng UML (Unified
+Modeling Language). UML là ngôn ngữ được sử dụng để mô tả các chức năng, hoạt động
+và cấu trúc của một hệ thống phần mềm bằng các biểu đồ.
+
+-- 13 of 52 --
+
+StarUML cung cấp giao diện trực quan, giúp người dùng dễ dàng tạo và chỉnh sửa các
+biểu đồ UML. Công cụ này hỗ trợ nhiều loại biểu đồ, trong đó nhóm sử dụng chủ
+yếu Use Case Diagram, Activity Diagram, Sequence Diagram và Class Diagram.
+Các biểu đồ được sử dụng trong đề tài:
++ Biểu đồ Ca sử dụng (Use Case Diagram ): mô tả các chức năng của hệ thống và
+người sử dụng các chức năng đó.
++ Biểu đồ hoạt động (Activity Diagram) : mô tả các bước thực hiện của một chức
+năng.
++ Biểu đồ tuần tự ( Sequence Diagram): mô tả quá trình tương tác giữa người dùng và
+hệ thống.
++ Biểu đồ lớp (Class Diagram): mô tả các lớp, thuộc tính và mối quan hệ giữa các
+lớp.
+- Ứng dụng trong đề tài:
++ Trong đề tài website quản lý dược phẩm, StarUML được nhóm sử dụng để phân
+tích và thiết kế hệ thống trước khi xây dựng website.
+a. Use Case Diagram -Biểu đồ
+- Nhóm sử dụng Use Case Diagram để xác định người sử dụng hệ thống và các chức
+năng mà họ có thể thực hiện.
+- Đối với website quản lý dược phẩm, các chức năng có thể bao gồm:
++ Đăng nhập.
++ Đăng xuất
++ Tìm kiếm thuốc
++ Bán thuốc.
++ Nhập thuốc
++ Tạo khoản chi
++ Quản lý nhân viên
++ Thống kê kho thuốc
++ Thống kê hóa đơn
+
+-- 14 of 52 --
+
++ Thống kê tài chính
+- Thông qua Use Case Diagram, nhóm có thể xác định rõ ai sử dụng hệ thống và mỗi
+người có thể thực hiện những chức năng nào.
+b. Activity Diagram -Biểu đồ hoạt động
+- Activity Diagram được sử dụng để mô tả các bước xử lý của một chức năng.
+Ví dụ, đối với chức năng bán thuốc:
+Chọn thuốc → Nhập số lượng → Kiểm tra số lượng tồn → Tính tiền → Xác nhận bán →
+Tạo hóa đơn → Cập nhật kho → Hoàn thành.
+Đối với chức năng nhập thuốc:
+Chọn nhà cung cấp → Chọn thuốc → Nhập số lượng → Nhập giá → Tạo phiếu nhập →
+Lưu thông tin → Cập nhật kho → Hoàn thành.
+- Việc xây dựng Activity Diagram giúp nhóm dễ dàng hình dung quá trình hoạt động của
+từng chức năng trước khi triển khai.
+c. Sequence Diagram -Biểu đồ tuần tự
+- Sequence Diagram được sử dụng để mô tả trình tự tương tác giữa người dùng và hệ
+thống.
+Ví dụ, với chức năng tìm kiếm thuốc, quá trình có thể được mô tả:
+Người dùng → Giao diện website → Xử lý yêu cầu → Cơ sở dữ liệu → Trả kết
+quả → Hiển thị cho người dùng.
+- Khi người dùng nhập tên thuốc cần tìm, hệ thống tiếp nhận yêu cầu, tìm kiếm thông
+tin trong cơ sở dữ liệu SQL Server và trả kết quả về giao diện website.
+- Đối với chức năng bán thuốc, biểu đồ Sequence giúp nhóm thể hiện quá trình từ lúc
+nhân viên chọn thuốc, kiểm tra số lượng tồn, tạo hóa đơn cho đến khi cập nhật lại số
+lượng thuốc trong kho.
+d. Class Diagram - Biểu đồ lớp
+- Class Diagram được sử dụng để mô tả các lớp và mối quan hệ giữa chúng trong hệ
+thống.
+- Dựa trên bài toán quản lý dược phẩm, nhóm có thể xây dựng các lớp như:
+Thuốc.
+
+-- 15 of 52 --
+
++ Loại thuốc.
++ Nhà cung cấp.
++ Nhân viên.
++ Khách hàng.
++ Phiếu nhập.
++ Chi tiết phiếu nhập.
++ Hóa đơn.
++ Chi tiết hóa đơn.
+Ví dụ, lớp Thuốc có các thông tin như mã thuốc, tên thuốc, giá bán, số lượng và
+hạn sử dụng. Lớp Hóa đơn có liên quan đến khách hàng, nhân viên và chi tiết hóa đơn.
+Chi tiết hóa đơn lại liên quan đến thuốc được bán.
+- Class Diagram giúp nhóm xác định được các đối tượng chính của hệ thống và mối
+quan hệ giữa chúng, từ đó hỗ trợ cho việc thiết kế cơ sở dữ liệu và xây dựng chương
+trình.
+- Vai trò của StarUML trong đề tài:
+StarUML giúp nhóm mô tả hệ thống website quản lý dược phẩm bằng các biểu đồ
+trực quan. Qua đó, nhóm có thể hiểu rõ hơn về chức năng, cách hoạt động và cấu trúc của
+hệ thống trước khi tiến hành xây dựng.
+- Có thể khái quát quá trình sử dụng StarUML trong đề tài như sau:
+Phân tích yêu cầu
+↓
+Xác định chức năng → Use Case
+↓
+Xác định các bước xử lý → Activity
+↓
+Xác định quá trình tương tác → Sequence
+↓
+Xác định các lớp và mối quan hệ → Class
+
+-- 16 of 52 --
+
+↓
+Làm cơ sở cho thiết kế cơ sở dữ liệu và xây dựng website
+- Như vậy, StarUML hỗ trợ nhóm trong phần phân tích và thiết kế, SQL Server 2019 hỗ
+trợ phần cơ sở dữ liệu, còn Microsoft Word 2016 hỗ trợ phần trình bày và hoàn thiện báo
+cáo. Ba công cụ được sử dụng kết hợp để phục vụ các bước chính trong quá trình thực
+hiện đề tài website quản lý dược phẩm.
+1.7 Tổng kết chương
+Ngoài ra, chương đã giới thiệu một số kiến thức nền tảng về an toàn thông tin có
+liên quan đến đề tài. Các nội dung được định hướng gồm xác thực người dùng, phân
+quyền theo vai trò, bảo vệ mật khẩu, kiểm tra dữ liệu đầu vào, bảo vệ dữ liệu nhạy cảm
+và ghi nhận nhật ký hoạt động. Trong đó, bảng TaiKhoan được sử dụng để lưu thông tin
+đăng nhập và vai trò của người dùng. Tuy nhiên, chương 1 chỉ trình bày các khái niệm và
+định hướng lý thuyết; việc triển khai cụ thể cơ chế phân quyền, băm mật khẩu, bảo vệ
+phiên làm việc và phòng chống các lỗ hổng bảo mật sẽ được trình bày trong mục 3.3.
+Tích hợp cơ chế an toàn.
+Cuối cùng, chương đã giới thiệu các công cụ và công nghệ dự kiến sử dụng trong
+quá trình xây dựng hệ thống, bao gồm Microsoft SQL Server 2019, StarUML . Mỗi công
+cụ đảm nhận một vai trò nhất định trong quá trình phân tích, thiết kế cơ sở dữ liệu, xây
+dựng Website.
+Như vậy, chương 1 đã cung cấp những kiến thức tổng quan, cơ sở lý thuyết và
+công cụ cần thiết cho đề tài. Những nội dung này là nền tảng để nhóm tiếp tục thực hiện
+việc phân tích yêu cầu, xây dựng các biểu đồ thiết kế, thiết kế cơ sở dữ liệu trong chương
+2.
+CHƯƠNG 2. PHÂN TÍCH VÀ THIẾT KẾ HỆ THỐNG
+2.1 Phân tích yêu cầu người dùng
+2.1.1 Yêu cầu chức năng
+2.1.1.1 Đăng nhập
+Tên chức năng Đăng nhập
+Đối tượng sử dụng Nhân viên , Quản lý
+
+-- 17 of 52 --
+
+Điều kiện đầu vào Đã đăng kí tài khoản thành công
+Nội dung Cho phép người dùng đăng nhập vào
+Website
+Cách xử lý 1. Người dùng chọn tên và nhập mật khẩu.
+Nhấn nút đăng nhập
+2. Hệ thống kiểm tra dữ liệu người dùng.
+Nếu thành công thì chuyển sang trang
+quản lý người dùng. Nếu thất bại thì in ra
+thông báo.
+Kết quả Đăng nhập thành công hoặc thất bại
+Ghi chú
+2.1.1.2 Đăng xuất
+Tên chức năng Đăng xuất
+Đối tượng sử dụng Nhân viên , Quản lý
+Điều kiện đầu vào Đã đăng nhập thành công
+Nội dung Cho phép người dùng đăng xuất khỏi
+Website
+Cách xử lý 1. Người dùng nhấn nút đăng xuất
+2. Hệ thống đăng xuất, hiển thị trang đăng
+nhập
+Kết quả Đăng xuất thành công.
+Ghi chú
+2.1.1.3 Tìm kiếm thuốc
+Tên chức năng Tìm kiếm thuốc
+Đối tượng sử dụng Nhân viên , Quản lý
+Điều kiện đầu vào Không
+Nội dung Tìm kiếm thuốc theo thông tin cho trước
+
+-- 18 of 52 --
+
+Cách xử lý 1. Người dùng nhấn vào thanh tìm kiếm
+2. Người dùng nhập vào ít nhất một thông
+tin về mã thuốc, tên thuốc, hoạt chất,
+nhóm thuốc, nhà cung cấp
+3. Hệ thống tìm kiếm trong cơ sở dữ liệu
+các loại thuốc tương ứng, in ra màn hình.
+4. Nếu người dùng đã đăng nhập, hiển thị
+mục "Tạo đơn hàng" trên mỗi mục.
+Chuyển đến trang "Bán thuốc" với loại
+thuốc tương ứng.
+Kết quả Hiển thị danh sách thuốc tìm được (các
+thông tin về thuốc, vị trí đặt thuốc)
+Ghi chú Các thông tin về thuốc: Mã thuốc, tên
+thuốc, hoạt chất, nhóm thuốc, nhà cung
+cấp, ngày hết hạn, đơn giá, lượng tồn kho.
+2.1.1.4 Bán thuốc
+Tên chức năng Bán thuốc
+Đối tượng sử dụng Nhân viên bán thuốc
+Điều kiện đầu vào Người dùng đã đăng nhập Website
+Nội dung Tạo hóa đơn bán thuốc
+Cách xử lý 1. Người dùng chọn mục "Bán
+thuốc/Bán thuốc"
+2. Người dùng tìm kiếm thuốc tại thanh
+tìm kiếm, chọn loại thuốc tìm được
+(kèm số lượng). Nếu số lượng thuốc
+không đủ, in thông báo ra màn hình
+3. Hệ thống hiển thị thông tin đơn hàng:
+Loại thuốc, đơn giá, thành tiền, tổng
+
+-- 19 of 52 --
+
+hóa đơn, thuế, số tiền khách đưa, số tiền
+trả lại, người lập hóa đơn, thông tin liên
+hệ.
+4. Người dùng nhấn vào nút "Hoàn
+thành", hệ thống lưu hóa đơn, giảm số
+lượng các loại thuốc ghi trong hóa đơn
+và tăng số tiền trong kho tương ứng với
+giá trị hóa đơn.
+Kết quả Tạo hóa đơn thành công hoặc thất bại
+Ghi chú
+2.1.1.5 Nhập thuốc
+Tên chức năng Nhập thuốc
+Đối tượng sử dụng Quản lý
+Điều kiện đầu vào Người dùng đã đăng nhập hệ thống
+Nội dung Tạo hóa đơn nhập thuốc
+Cách xử lý 1. Người dùng chọn mục "Kho thuốc/Nhập
+thuốc"
+2. Nhập các thông tin về thuốc, số lượng và
+nhấn vào nút "Nhập"
+3. Hệ thống lưu hóa đơn, tăng số lượng
+thuốc theo biểu mẫu nhập.
+Kết quả Nhập thành công hoặc thất bại
+Ghi chú Thông tin về thuốc: Mã thuốc, tên thuốc,
+hoạt chất, nhóm thuốc, nhà cung cấp, ngày
+hết hạn, đơn giá.
+2.1.6 Tạo khoản chi
+Tên chức năng Tạo khoản chi
+
+-- 20 of 52 --
+
+Đối tượng sử dụng Quản lý
+Điều kiện đầu vào Người dùng đã đăng nhập vào hệ thống
+Nội dung Tạo khoản chi
+Cách xử lý 1. Người dùng chọn mục "Tài chính/Tạo
+khoản chi"
+2. Nhập số tiền và nội dung khoản chi.
+Nếu số tiền vượt quá số tiền
+trong kho thì thông báo ra màn hình và
+yêu cầu người dùng nhập số tiền nhỏ hơn.
+3. Người dùng nhấn vào nút "Rút". Hệ
+thống trừ số tiền tương ứng.
+Kết quả Rút thành công hoặc thất bại
+Ghi chú
+2.1.1.7 Quản lý nhân viên
+Tên chức năng Quản lý nhân viên
+Đối tượng sử dụng Quản lý
+Điều kiện đầu vào Người dùng đã đăng nhập vào hệ thống
+Nội dung Chỉnh sửa thông tin nhân viên
+Cách xử lý 1. Người dùng chọn mục "Nhân viên"
+2. Hệ thống in ra danh sách thông tin nhân
+viên và nút "Tạo mới nhân viên".
+3. Nếu người dùng nhấn nút tạo mới, hệ
+thống tạo một nhân viên mới vào cuối
+danh sách cho người dùng nhập thông tin.
+Nếu người dùng là Quản lý thì không
+được thay đổi chức vụ của nhân viên
+4. Người dùng nhấn "Lưu", hệ thống lưu
+các chỉnh sửa của người dùng.
+Kết quả Chỉnh sửa thành công hoặc thất bại
+
+-- 21 of 52 --
+
+Ghi chú Thông tin nhân viên bao gồm: Tên nhân
+viên, giới tính, năm sinh, chức vụ (Nhân
+viên bán hàng hoặc/và Quản lý).
+2.1.1.8 Thống kê kho thuốc
+Tên chức năng Thống kê kho thuốc
+Đối tượng sử dụng Nhân viên bán hàng ,quản lý
+Điều kiện đầu vào Người dùng đã đăng nhập vào hệ thống
+Nội dung Thống kê lượng tồn kho
+Cách xử lý 1. Người dùng chọn trang "Kho
+thuốc/Thống kê"
+2. Hệ thống tính toán, đưa ra danh sách
+các loại thuốc
+3. Nếu người dùng chọn mục "Số lượng",
+đưa ra thông tin các loại thuốc đã hết/sắp
+hết số lượng.
+4. Nếu ngời dùng chọn mục "Hạn sử
+dụng", đưa ra thông tin các loại thuốc đã
+quá hạn/sắp hết hạn.
+Kết quả Danh sách các loại thuốc tìm được
+Ghi chú Các thông tin về thuốc: Mã thuốc, tên
+thuốc, hoạt chất, nhóm thuốc, nhà cung
+cấp, ngày hết hạn, đơn giá, lượng tồn kho
+2.1.1.9 Thống kê hóa đơn
+Tên chức năng Thống kê hóa đơn
+Đối tượng sử dụng Nhân viên bán hàng, Quản lý
+Điều kiện đầu vào Người dùng đã đăng nhập vào hệ thống
+Nội dung Thống kê lượng tồn kho
+
+-- 22 of 52 --
+
+Cách xử lý 1. Người dùng chọn trang "Kho
+thuốc/Thống kê"
+2. Hệ thống tính toán, đưa ra danh sách
+các loại thuốc
+3. Nếu người dùng chọn mục "Số lượng",
+đưa ra thông tin các loại thuốc đã hết/sắp
+hết số lượng.
+4. Nếu ngời dùng chọn mục "Hạn sử
+dụng", đưa ra thông tin các loại thuốc đã
+quá hạn/sắp hết hạn.
+Kết quả Danh sách các loại thuốc tìm được.
+Ghi chú Các thông tin về thuốc: Mã thuốc, tên
+thuốc, hoạt chất, nhóm thuốc, nhà cung
+cấp, ngày hết hạn, đơn giá, lượng tồn kho.
+2.1.10 Thống kê tài chính
+Tên chức năng Thống kê
+Đối tượng sử dụng Nhân viên bán hàng, Quản lý
+Điều kiện đầu vào Người dùng đã đăng nhập vào hệ thống
+Nội dung Thống kê lượng tiền vào/ra trong khoảng
+thời gian cho trước.
+Cách xử lý 1. Người dùng chọn trang "Tài
+chính/Thống kê"
+2. Người dùng chọn khoảng thời gian
+thống kê, nhập khoảng thời gian thống kê.
+3. Hệ thống tìm kiếm các khoản chi, hóa
+đơn bán hàng trong khoảng thời gian đã
+nhập, hiển thị ra màn hình.
+
+-- 23 of 52 --
+
+Kết quả Lượng tiền vào/ra trong khoảng thời gian
+đã nhập, danh sách các hóa đơn, khoản chi
+trong thời gian tương ứng.
+Ghi chú
+2.1.2 Yêu cầu phi chức năng
+− Tuân thủ các nguyên tắc kế toán.
+− Hệ thống chạy nhanh, ổn định, chính xác.
+− Giao diện dễ sử dụng
+− Quá trình thao tác, xử lý nhanh
+− Đảm bảo an toàn, chính xác
+− Phải đưa ra được các thông tin cần thiết về quầy thuốc, loại thuốc
+− Các phiếu nhập, xuất phải đưa ra được các thông tin cụ thể như: số phiếu, tên
+khách hàng, địa chỉ, tên thuốc, đơn giá…
+− Báo cáo phải xác định được chính xác về quá trình nhập, xuất, tồn kho…
+− Quá trình cập nhật, sửa, xóa dễ dàng
+2.2 Biểu đồ Usecase
+
+-- 24 of 52 --
+
+2.2.1 Usecase tổng quát
+2.2.2 Usecase bán hàng
+
+-- 25 of 52 --
+
+2.2.3 Usecase quản lý thuốc
+
+-- 26 of 52 --
+
+2.2.4 Usecase Quản lý hóa đơn bán hàng
+
+-- 27 of 52 --
+
+2.2.5 Usecase Quản lý nhân viên
+
+-- 28 of 52 --
+
+2.2.6 Usecase Quản lý tài chính
+
+-- 29 of 52 --
+
+2.3 Biểu đồ tuần tự
+2.3.1 Biểu đồ tuần tự đăng nhập
+
+-- 30 of 52 --
+
+2.3.2 Biểu đồ tuần tự đăng xuất
+
+-- 31 of 52 --
+
+2.3.3 Biểu đồ tuần tự bán hàng
+
+-- 32 of 52 --
+
+2.3.4 Biểu đồ tuần tự kiểm tra hóa đơn
+
+-- 33 of 52 --
+
+2.3.5 Biểu đồ tuần tự hủy hóa đơn bán hàng
+
+-- 34 of 52 --
+
+2.3.6 Biểu đồ tuần tự thống kê hóa đơn bán hàng
+
+-- 35 of 52 --
+
+2.3.7 Biểu đồ tuần tự tìm kiếm sản phẩm
+
+-- 36 of 52 --
+
+2.3.8 Biểu đồ tuần tự sửa thông tin sản phẩm
+
+-- 37 of 52 --
+
+2.3.9 Biểu đồ tuần tự nhập sản phẩm
+
+-- 38 of 52 --
+
+2.3.10 Biểu đồ tuần tự xuất sản phẩm
+
+-- 39 of 52 --
+
+2.3.11 Biểu đồ tuần tự thống kê sản phẩm
+
+-- 40 of 52 --
+
+2.3.12 Biểu đồ tuần tự kiểm tra tài chính
+2.3.13 Biểu đồ tuần tự tạo phiếu thu
+
+-- 41 of 52 --
+
+2.3.14 Biểu đồ tuần tự tạo phiếu chi
+
+-- 42 of 52 --
+
+2.3.15 Biểu đồ tuần tự thống kê tài chính
+
+-- 43 of 52 --
+
+2.3.16 Biểu đồ tuần tự tạo nhân viên mới
+
+-- 44 of 52 --
+
+2.3.17 Biểu đồ t tự sửa thông tin nhân viên
+
+-- 45 of 52 --
+
+2.3.18 Biểu đồ tuần tự danh sách nhân viên
+2.5 Thiết kế cơ sở dữ liệu
+
+-- 46 of 52 --
+
+Bảng danh mục (DanhMuc)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaDM varchar 20 Khóa chính,mã danh
+mục
+TenDM nvarchar 200 Tên danh mục
+Bảng nhà cung cấp (NhaCungCap)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaNCC int 4 Khóa chính ,mã nhà
+cung cấp
+TenNCC nvarchar 400 Tên nhà cung cấp
+DiaChi nvarchar 1000 Địa chỉ
+SDT varchar 15 Số điện thoại
+Bảng khách hàng (KhachHang)
+
+-- 47 of 52 --
+
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaKH int 4 Khóa chính,mã khách
+hàng
+TenKH nvarchar 200 Tên khách hàng
+SDT varchar 15 Số điện thoại
+GioiTinh nvarchar 20 Giới tính
+Bảng Nhân viên (NhanVien)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaNV int 4 Khóa chính,mã nhân
+viên
+TenNV nvarchar 200 Tên nhân viên
+SDT varchar 15 Số điện thoại
+GioiTinh nvarchar 20 Giới tính
+Luong decimal 9 Lương
+Bảng tài khoản (TaiKhoan)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+TenDangNhap varchar 50 khóa chính,Tên đăng
+nhập
+MatKhau varchar 255 Mật khẩu
+VaiTro varchar 50 Vai trò
+TrangThai nvarchar 100 Trạng thái
+MaNV int 4 Khóa ngoại, Mã nhân
+viên
+
+-- 48 of 52 --
+
+Bảng thuốc (Thuoc)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaThuoc int 4 Khóa chính,mã thuốc
+TenThuoc nvarchar 400 Tên thuốc
+KhoiLuong nvarchar 100 Khối lượng
+GiaBanThamKhao decimal 9 Giá bán tham khảo
+MaDM int 4 Khóa ngoại,Mã danh
+mục
+Bảng phiếu nhập (PhieuNhap)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaPN int 4 Khóa chính,Mã phiếu
+nhập
+NgayNhap datetime 8 Ngày nhập
+TrangThai nvarchar 100 Trạng thái
+MaNCC int 4 Khóa ngoại ,Mã nhà
+cung cấp
+MaNV int 4 Khóa ngoại ,mã nhân
+viên
+Bảng lô thuốc- Chi tiết nhập (LoThuoc_ChiTietNhap)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaLo int Khóa chính ,Mã lô
+SoLuongNhap int 4 Số lượng nhập
+SoLuongTonKho int 4 Sô lượng tồn kho
+
+-- 49 of 52 --
+
+NgaySX date 3 Ngày sản xuất
+HanSD date 3 Hạn sử dụng
+GiaNhap decimal 9 Giá nhập
+MaPN int 4 Khóa ngoại ,Mã
+phiếu nhập
+MaThuoc int 4 Khóa ngoại ,Mã
+thuốc
+Bảng hóa đơn (HoaDon)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaHD int 4 Khóa chính ,Mã hóa
+đơn
+NgayGioLap datetime 8 Ngày giờ lập hóa
+đơn
+TongTien decimal 9 Tổng tiền
+MaNV int 4 Khóa ngoại ,Mã nhân
+viên
+MaKH int 4 Khóa ngoại ,Mã
+khách hàng
+Bảng chi tiết hóa đơn (ChiTietHoaDon)
+Tên cột Kiểu dữ liệu Độ dài Giải thích
+MaHD int 4 Khóa chính ,Mã hóa
+đơn
+MaLo int 4 Khóa chính ,Mã lô
+SoLuongBan int 4 Số lượng bán
+
+-- 50 of 52 --
+
+GiaBanThucTe decimal 9 Giá bán thực tế
+2.6 Tổng kết chương
+Khảo sát và xác lập hệ thống yêu cầu đặc thù: Dựa trên việc khảo sát nghiệp vụ
+thực tế của cửa hàng dược phẩm, nhóm chúng em đã định hình rõ nét các yêu cầu chức
+năng cốt lõi như:
+- Quản lý danh mục dược phẩm theo nhóm bệnh; Quản lý kho thuốc (theo dõi
+số lô, hạn sử dụng để cảnh báo hàng sắp hết hạn)
+- Quản lý hóa đơn bán lẻ và bán theo đơn
+- Quản lý nhà cung cấp và nhập kho
+- Đồng thời, nhóm cũng xây dựng các yêu cầu phi chức năng về tính bảo mật
+thông tin khách hàng, tốc độ truy xuất dữ liệu trong giờ cao điểm và giao diện trực
+quan làm tiêu chuẩn kiểm định chất lượng cho hệ thống trong các bước phát triển
+tiếp theo.
+Mô hình hóa quy trình nghiệp vụ qua ngôn ngữ UML: Việc ứng dụng ngôn ngữ
+mô hình hóa thống nhất (UML) đã giúp nhóm cụ thể hóa và trực quan hóa các luồng vận
+hành phức tạp của cửa hàng dược phẩm:
+- Biểu đồ Use Case: Phân định rõ quyền hạn và phạm vi thao tác của từng tác
+nhân (Admin, Nhân viên bán hàng, Thủ kho). Qua đó, thiết lập cơ chế phân quyền
+chặt chẽ, đảm bảo tính minh bạch trong quản lý doanh thu và tồn kho.
+- Biểu đồ Hoạt động (Activity Diagram): Mô phỏng chi tiết các quy trình
+nghiệp vụ quan trọng như quy trình bán thuốc (kiểm tra tồn kho -> lập hóa đơn ->
+trừ kho) và quy trình nhập hàng từ nhà cung cấp. Các rẽ nhánh logic được nhóm
+xử lý triệt để nhằm hạn chế tối đa sai sót con người trong vận hành thực tế.
+
+-- 51 of 52 --
+
+- Biểu đồ Tuần tự (Sequence Diagram): Làm sáng tỏ cơ chế tương tác giữa
+giao diện người dùng và cơ sở dữ liệu. Đây là tài liệu kỹ thuật quan trọng giúp
+nhóm xác định chính xác các hàm, phương thức cần cài đặt cho từng chức năng
+như: Tìm kiếm thuốc theo tên/hoạt chất, hay kết xuất báo cáo doanh thu định kỳ.
+Thiết kế kiến trúc dữ liệu bền vững: Nhận thức được rằng dữ liệu là tài sản quý
+giá nhất của một hệ thống quản lý, phần thiết kế cơ sở dữ liệu đã được nhóm thực
+hiện một cách khoa học và chặt chẽ: Biểu đồ quan hệ thực thể (ERD): Chuẩn hóa
+các thực thể (Thuốc, Loại thuốc, Đơn hàng, Nhà cung cấp, Nhân viên) cùng các
+mối quan hệ giữa chúng. Điều này đảm bảo tính nhất quán của dữ liệu, tránh tình
+trạng dư thừa hay mâu thuẫn thông tin khi quản lý hàng nghìn danh mục thuốc
+khác nhau. Mô tả chi tiết các bảng trong CSDL: Việc định nghĩa kỹ lưỡng các
+kiểu dữ liệu, khóa chính, khóa ngoại và các ràng buộc (constraints) giúp tối ưu hóa
+hiệu suất truy vấn và đảm bảo tính toàn vẹn dữ liệu (Data Integrity) cho hệ thống
+khi đi vào vận hành.
+Kết luận: Tất cả các kết quả phân tích và thiết kế trong chương này không chỉ
+dừng lại ở mặt lý thuyết mà còn tạo thành bản thiết kế kỹ thuật (Blueprints) hoàn chỉnh.
+Đây là căn cứ khoa học vững chắc để nhóm tiến hành giai đoạn hiện thực hóa, cài đặt và
+kiểm thử hệ thống ở chương tiếp theo.
+
+-- 52 of 52 --
+
